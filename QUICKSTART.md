@@ -329,8 +329,9 @@ npm run build
 1. ✅ Read [ARCHITECTURE.md](./ARCHITECTURE.md)
 2. ✅ Check [SETUP_GUIDE.md](./SETUP_GUIDE.md)
 3. ✅ Review [CONTRIBUTING.md](./CONTRIBUTING.md)
-4. ✅ Explore the codebase
-5. ✅ Make your first contribution
+4. ✅ Deploy to [Netlify](./NETLIFY_DEPLOY.md)
+5. ✅ Explore the codebase
+6. ✅ Make your first contribution
 
 ## 🎓 Learning Resources
 

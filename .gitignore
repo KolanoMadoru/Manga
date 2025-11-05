@@ -41,3 +41,6 @@ firestore-debug.log
 build
 coverage
 .cache
+
+# Netlify
+.netlify
