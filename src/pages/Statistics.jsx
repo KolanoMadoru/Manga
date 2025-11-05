@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { TrendingUp } from 'lucide-react';
-import useAuthStore from '../store/authStore';
 import useMangaStore from '../store/mangaStore';
 
 const COLORS = ['#0ea5e9', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444'];
 
 const Statistics = () => {
-  const { user } = useAuthStore();
-  const { userMangaList, fetchUserMangaList, mangas } = useMangaStore();
+  const { userMangaList, mangas, fetchAllMangas } = useMangaStore();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     byStatus: [],
@@ -18,13 +16,11 @@ const Statistics = () => {
 
   useEffect(() => {
     const init = async () => {
-      if (user) {
-        await fetchUserMangaList(user.uid);
-      }
+      await fetchAllMangas();
       setLoading(false);
     };
     init();
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     if (userMangaList.length > 0) {
@@ -88,7 +84,7 @@ const Statistics = () => {
           Statistics
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Your manga reading statistics and insights
+          Manga reading statistics and insights
         </p>
       </div>
 
@@ -187,7 +183,7 @@ const Statistics = () => {
             No statistics available yet
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-500">
-            Start adding manga to your list to see statistics
+            Statistics will be shown when manga data is available
           </p>
         </div>
       )}

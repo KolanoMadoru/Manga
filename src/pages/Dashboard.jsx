@@ -1,30 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, TrendingUp, Clock, Check } from 'lucide-react';
-import useAuthStore from '../store/authStore';
 import useMangaStore from '../store/mangaStore';
 import useSocialStore from '../store/socialStore';
 import MangaCard from '../components/manga/MangaCard';
 
 const Dashboard = () => {
-  const { userProfile } = useAuthStore();
-  const { userMangaList, fetchUserMangaList, mangas, fetchAllMangas } = useMangaStore();
-  const { activities, fetchActivities } = useSocialStore();
+  const { userMangaList, mangas, fetchAllMangas } = useMangaStore();
+  const { activities, fetchAllActivities } = useSocialStore();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const init = async () => {
-      if (userProfile) {
-        await Promise.all([
-          fetchUserMangaList(userProfile.uid),
-          fetchAllMangas(),
-          fetchActivities(userProfile.uid, true)
-        ]);
-      }
+      await Promise.all([
+        fetchAllMangas(),
+        fetchAllActivities()
+      ]);
       setLoading(false);
     };
     init();
-  }, [userProfile]);
+  }, []);
 
   const stats = [
     {
@@ -71,10 +66,10 @@ const Dashboard = () => {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Welcome back, {userProfile?.displayName}!
+          Welcome to MangaTracker!
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Here's what's happening with your manga
+          Explore and track your manga reading journey
         </p>
       </div>
 

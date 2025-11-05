@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Plus, Search, Filter } from 'lucide-react';
+import { Search, Filter } from 'lucide-react';
 import useMangaStore from '../store/mangaStore';
-import useAuthStore from '../store/authStore';
 import MangaCard from '../components/manga/MangaCard';
-import AddMangaModal from '../components/manga/AddMangaModal';
 
 const MangaList = () => {
   const { mangas, fetchAllMangas, searchMangas } = useMangaStore();
-  const { userProfile } = useAuthStore();
   const [loading, setLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     genre: '',
@@ -61,16 +57,6 @@ const MangaList = () => {
             Browse and discover manga
           </p>
         </div>
-        
-        {userProfile?.role === 'admin' && (
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="btn-primary flex items-center space-x-2"
-          >
-            <Plus className="w-5 h-5" />
-            <span>Add Manga</span>
-          </button>
-        )}
       </div>
 
       <div className="card">
@@ -122,11 +108,6 @@ const MangaList = () => {
           </p>
         </div>
       )}
-
-      <AddMangaModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </div>
   );
 };
