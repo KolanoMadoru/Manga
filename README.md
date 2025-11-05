@@ -1,6 +1,10 @@
 # 📚 MangaTracker - Manga Reading Tracker & Social Platform
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_SITE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
+
 A comprehensive web application for tracking manga reading progress with social features built with React.js, Firebase, and Tailwind CSS.
+
+**🚀 Ready for deployment to Netlify!** - See [NETLIFY_DEPLOY.md](./NETLIFY_DEPLOY.md) for instructions.
 
 ## ✨ Features
 
@@ -348,7 +352,34 @@ The application uses **Zustand** for state management, chosen for its simplicity
 
 ## 🚀 Deployment
 
-### Deploy to Vercel (Recommended for Frontend)
+### Deploy to Netlify (Recommended)
+
+The easiest way to deploy this application. Netlify configuration is already included!
+
+1. **Quick Deploy**:
+   - Push your code to GitHub/GitLab
+   - Connect your repository to [Netlify](https://app.netlify.com)
+   - Netlify will auto-detect settings from `netlify.toml`
+   - Add environment variables in Netlify dashboard
+   - Click "Deploy site" ✨
+
+2. **Environment Variables**: Add these in Netlify dashboard under Site settings → Environment variables:
+   ```
+   VITE_FIREBASE_API_KEY
+   VITE_FIREBASE_AUTH_DOMAIN
+   VITE_FIREBASE_PROJECT_ID
+   VITE_FIREBASE_STORAGE_BUCKET
+   VITE_FIREBASE_MESSAGING_SENDER_ID
+   VITE_FIREBASE_APP_ID
+   ```
+
+3. **Important**: Add your Netlify domain to Firebase authorized domains:
+   - Firebase Console → Authentication → Settings → Authorized domains
+   - Add: `your-site.netlify.app`
+
+📖 **Full Guide**: See [NETLIFY_DEPLOY.md](./NETLIFY_DEPLOY.md) for detailed instructions including CLI deployment and troubleshooting.
+
+### Deploy to Vercel
 
 1. Install Vercel CLI:
 ```bash
