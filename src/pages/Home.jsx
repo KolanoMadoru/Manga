@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { BookOpen, Users, BarChart3, Star } from 'lucide-react';
+import useAuthStore from '../store/authStore';
 
 const Home = () => {
+  const { user } = useAuthStore();
   const features = [
     {
       icon: BookOpen,
@@ -37,16 +39,31 @@ const Home = () => {
               Organize, track, and share your manga reading experience with friends
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link to="/manga" className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Browse Manga
-              </Link>
-              <Link to="/dashboard" className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors">
-                View Dashboard
-              </Link>
+              {user ? (
+                <>
+                  <Link to="/dashboard" className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Go to Dashboard
+                  </Link>
+                  <Link to="/manga" className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors">
+                    Browse Manga
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/register" className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Get Started
+                  </Link>
+                  <Link to="/login" className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors">
+                    Sign In
+                  </Link>
+                </>
+              )}
             </div>
-            <p className="mt-4 text-sm text-primary-100">
-              Free to use • No registration required
-            </p>
+            {!user && (
+              <p className="mt-4 text-sm text-primary-100">
+                Free to use • Multi-user support • Track with friends
+              </p>
+            )}
           </div>
         </div>
       </section>

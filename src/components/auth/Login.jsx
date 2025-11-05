@@ -43,14 +43,11 @@ const Login = () => {
     setLoading(false);
   };
 
-  const handleDemoLogin = async () => {
+  const handleQuickLogin = async (userEmail, userPassword) => {
     setError('');
     setLoading(true);
 
-    const demoEmail = 'demo@mangatracker.com';
-    const demoPassword = 'demo123456';
-
-    const result = await login(demoEmail, demoPassword);
+    const result = await login(userEmail, userPassword);
     
     if (result.success) {
       navigate('/dashboard');
@@ -140,14 +137,27 @@ const Login = () => {
           </form>
 
           <div className="mt-6">
-            <button
-              onClick={handleDemoLogin}
-              disabled={loading}
-              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg font-medium"
-            >
-              <Sparkles className="w-5 h-5" />
-              <span>Try Demo Account</span>
-            </button>
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Quick Login (Seed Users)
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => handleQuickLogin('rahman@mangashelf.com', 'rahman123')}
+                disabled={loading}
+                className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg font-medium text-sm"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Rahman</span>
+              </button>
+              <button
+                onClick={() => handleQuickLogin('rivai@mangashelf.com', 'rivai123')}
+                disabled={loading}
+                className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg font-medium text-sm"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Rivai</span>
+              </button>
+            </div>
           </div>
 
           <div className="mt-6">

@@ -1,20 +1,34 @@
-# 📚 MangaTracker - Manga Reading Tracker & Social Platform
+# 📚 MangaShelf - Manga Reading Tracker & Social Platform
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_SITE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
 
 A comprehensive web application for tracking manga reading progress with social features built with React.js, Firebase, and Tailwind CSS.
 
-**🚀 Ready for deployment to Netlify!** - See [NETLIFY_DEPLOY.md](./NETLIFY_DEPLOY.md) for instructions.
+**🚀 Ready for deployment to Netlify!** - See [README_SETUP.md](./README_SETUP.md) for complete setup and deployment instructions.
+
+## 👥 Seed Users Available
+
+Two default users are ready for immediate testing:
+- **Rahman** (rahman@mangashelf.com / rahman123)
+- **Rivai** (rivai@mangashelf.com / rivai123)
+
+Use the **Quick Login** buttons on the login page!
+
+## 📚 Documentation
+
+- 📖 [Setup & Deployment Guide](./README_SETUP.md) - Complete installation and deployment instructions
+- ✅ [Feature Checklist](./FEATURE_CHECKLIST.md) - Full list of implemented features
+- 🚀 [Netlify Deployment](./NETLIFY_DEPLOY.md) - Netlify-specific deployment guide
 
 ## ✨ Features
 
 ### 👥 User & Authentication
 - ✅ Login, Register, and Password Reset
 - ✅ Google OAuth authentication
-- ✅ **Demo Account** - Try the app instantly without registration
+- ✅ **Seed Users (Rahman & Rivai)** - Quick login buttons for testing
 - ✅ Role-based access (Admin & User)
-- ✅ User profiles with avatars
-- ✅ Profile editing
+- ✅ User profiles with avatars and bio
+- ✅ Profile editing and viewing
 
 ### 📚 Manga Database
 - ✅ Add manga manually (title, author, genre, status, chapters, cover)
