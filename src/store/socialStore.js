@@ -65,6 +65,26 @@ const useSocialStore = create((set, get) => ({
     }
   },
 
+  fetchAllActivities: async () => {
+    try {
+      set({ loading: true, error: null });
+      const activitiesRef = collection(db, 'activities');
+      const q = query(
+        activitiesRef,
+        orderBy('createdAt', 'desc'),
+        firestoreLimit(50)
+      );
+      
+      const snapshot = await getDocs(q);
+      const activities = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      set({ activities, loading: false });
+      return activities;
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      return [];
+    }
+  },
+
   createActivity: async (userId, userName, userPhoto, type, data) => {
     try {
       const newActivity = {

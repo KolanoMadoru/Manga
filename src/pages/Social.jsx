@@ -1,43 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Heart, MessageCircle, BookOpen } from 'lucide-react';
-import useAuthStore from '../store/authStore';
 import useSocialStore from '../store/socialStore';
 
 const Social = () => {
-  const { user, userProfile } = useAuthStore();
-  const { activities, fetchActivities, likeActivity, addComment } = useSocialStore();
+  const { activities, fetchAllActivities } = useSocialStore();
   const [loading, setLoading] = useState(true);
-  const [commentForm, setCommentForm] = useState({});
 
   useEffect(() => {
     const init = async () => {
-      if (user) {
-        await fetchActivities(user.uid, true);
-      }
+      await fetchAllActivities();
       setLoading(false);
     };
     init();
-  }, [user]);
-
-  const handleLike = async (activityId) => {
-    if (!user) return;
-    await likeActivity(activityId, user.uid);
-  };
-
-  const handleComment = async (activityId) => {
-    if (!user || !userProfile || !commentForm[activityId]) return;
-
-    await addComment(
-      activityId,
-      'activity',
-      user.uid,
-      userProfile.displayName,
-      userProfile.photoURL,
-      commentForm[activityId]
-    );
-
-    setCommentForm({ ...commentForm, [activityId]: '' });
-  };
+  }, []);
 
   if (loading) {
     return (
@@ -54,7 +29,7 @@ const Social = () => {
           Social Feed
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          See what your friends are reading
+          Community manga activity and reviews
         </p>
       </div>
 
@@ -103,45 +78,14 @@ const Social = () => {
                     </div>
                   )}
 
-                  <div className="flex items-center space-x-4 mb-3">
-                    <button
-                      onClick={() => handleLike(activity.id)}
-                      className={`flex items-center space-x-1 ${
-                        activity.likes?.includes(user?.uid)
-                          ? 'text-red-600 dark:text-red-400'
-                          : 'text-gray-600 dark:text-gray-400'
-                      } hover:text-red-600 dark:hover:text-red-400 transition-colors`}
-                    >
-                      <Heart className={`w-5 h-5 ${activity.likes?.includes(user?.uid) ? 'fill-current' : ''}`} />
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-1 text-gray-600 dark:text-gray-400">
+                      <Heart className="w-5 h-5" />
                       <span>{activity.likes?.length || 0}</span>
-                    </button>
-                    <button className="flex items-center space-x-1 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    </div>
+                    <div className="flex items-center space-x-1 text-gray-600 dark:text-gray-400">
                       <MessageCircle className="w-5 h-5" />
                       <span>{activity.commentsCount || 0}</span>
-                    </button>
-                  </div>
-
-                  <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="text"
-                        value={commentForm[activity.id] || ''}
-                        onChange={(e) => setCommentForm({ ...commentForm, [activity.id]: e.target.value })}
-                        placeholder="Write a comment..."
-                        className="input-field text-sm"
-                        onKeyPress={(e) => {
-                          if (e.key === 'Enter') {
-                            handleComment(activity.id);
-                          }
-                        }}
-                      />
-                      <button
-                        onClick={() => handleComment(activity.id)}
-                        className="btn-primary text-sm"
-                        disabled={!commentForm[activity.id]}
-                      >
-                        Post
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -155,7 +99,7 @@ const Social = () => {
               No activities yet
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-500">
-              Follow friends to see their manga activity
+              Check back later for manga activity
             </p>
           </div>
         )}
