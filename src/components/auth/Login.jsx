@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Chrome } from 'lucide-react';
+import { Mail, Lock, Chrome, Sparkles } from 'lucide-react';
 import useAuthStore from '../../store/authStore';
 
 const Login = () => {
@@ -33,6 +33,24 @@ const Login = () => {
     setLoading(true);
 
     const result = await loginWithGoogle();
+    
+    if (result.success) {
+      navigate('/dashboard');
+    } else {
+      setError(result.error);
+    }
+    
+    setLoading(false);
+  };
+
+  const handleDemoLogin = async () => {
+    setError('');
+    setLoading(true);
+
+    const demoEmail = 'demo@mangatracker.com';
+    const demoPassword = 'demo123456';
+
+    const result = await login(demoEmail, demoPassword);
     
     if (result.success) {
       navigate('/dashboard');
@@ -120,6 +138,17 @@ const Login = () => {
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
+
+          <div className="mt-6">
+            <button
+              onClick={handleDemoLogin}
+              disabled={loading}
+              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg font-medium"
+            >
+              <Sparkles className="w-5 h-5" />
+              <span>Try Demo Account</span>
+            </button>
+          </div>
 
           <div className="mt-6">
             <div className="relative">

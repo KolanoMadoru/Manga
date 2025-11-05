@@ -11,6 +11,7 @@ A comprehensive web application for tracking manga reading progress with social 
 ### 👥 User & Authentication
 - ✅ Login, Register, and Password Reset
 - ✅ Google OAuth authentication
+- ✅ **Demo Account** - Try the app instantly without registration
 - ✅ Role-based access (Admin & User)
 - ✅ User profiles with avatars
 - ✅ Profile editing
@@ -250,6 +251,15 @@ manga-tracker/
 
 ## 🚀 Getting Started
 
+### 🎮 Try Demo Account (No Setup Required!)
+
+Want to test the app immediately? Use the demo account:
+
+**Email:** demo@mangatracker.com  
+**Password:** demo123456
+
+Or click **"Try Demo Account"** button on the login page!
+
 ### Prerequisites
 - Node.js (v18 or higher)
 - npm or yarn
@@ -288,7 +298,13 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 VITE_FIREBASE_APP_ID=your_app_id
 ```
 
-5. **Run the development server**
+5. **Create Demo Account (Optional)**
+```bash
+node scripts/create-demo-account.js
+```
+See [DEMO_ACCOUNT.md](./DEMO_ACCOUNT.md) for more details.
+
+6. **Run the development server**
 ```bash
 npm run dev
 ```
