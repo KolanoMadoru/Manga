@@ -5,6 +5,7 @@ import useThemeStore from './store/themeStore';
 
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import FirebaseConfigChecker from './components/common/FirebaseConfigChecker';
 
 import Home from './pages/Home';
 import Login from './components/auth/Login';
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <Router>
+      <FirebaseConfigChecker />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
