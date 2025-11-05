@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Users, BarChart3, Star } from 'lucide-react';
+import { BookOpen, Users, BarChart3, Star, Sparkles } from 'lucide-react';
 
 const Home = () => {
   const features = [
@@ -36,14 +36,24 @@ const Home = () => {
             <p className="text-xl mb-8 text-primary-100">
               Organize, track, and share your manga reading experience with friends
             </p>
-            <div className="flex justify-center space-x-4">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Link to="/register" className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Get Started
               </Link>
               <Link to="/login" className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors">
                 Sign In
               </Link>
+              <Link 
+                to="/login" 
+                className="inline-flex items-center space-x-2 px-6 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg font-medium text-sm"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Try Demo</span>
+              </Link>
             </div>
+            <p className="mt-4 text-sm text-primary-100">
+              No registration required • Instant access
+            </p>
           </div>
         </div>
       </section>

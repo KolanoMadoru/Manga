@@ -80,6 +80,15 @@ const Register = () => {
             <p className="text-gray-600 dark:text-gray-400">
               Start tracking your manga journey
             </p>
+            <div className="mt-3 text-sm text-purple-600 dark:text-purple-400">
+              Want to try first?{' '}
+              <Link
+                to="/login"
+                className="font-semibold underline hover:text-purple-700 dark:hover:text-purple-300"
+              >
+                Use Demo Account
+              </Link>
+            </div>
           </div>
 
           {error && (
