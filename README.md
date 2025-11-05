@@ -393,7 +393,33 @@ The easiest way to deploy this application. Netlify configuration is already inc
    - Firebase Console → Authentication → Settings → Authorized domains
    - Add: `your-site.netlify.app`
 
-📖 **Full Guide**: See [NETLIFY_DEPLOY.md](./NETLIFY_DEPLOY.md) for detailed instructions including CLI deployment and troubleshooting.
+4. **After deployment, trigger a new deploy** to ensure environment variables are loaded.
+
+📖 **Full Guide**: See [NETLIFY_DEPLOY.md](./NETLIFY_DEPLOY.md) for detailed instructions including CLI deployment.
+
+### 🚨 Troubleshooting Deployment Issues
+
+**Authentication not working after deployment?** This is a common issue! Check these guides:
+
+- 🔍 **Quick Fix Guide**: [QUICK_DEBUG_GUIDE.md](./QUICK_DEBUG_GUIDE.md) - Fast solutions for 95% of cases
+- 📖 **Complete Guide**: [DEPLOYMENT_TROUBLESHOOTING.md](./DEPLOYMENT_TROUBLESHOOTING.md) - Comprehensive troubleshooting
+
+**Common causes:**
+1. ❌ Environment variables not set in Netlify Dashboard
+2. ❌ Netlify domain not added to Firebase Authorized Domains
+3. ❌ Forgot to redeploy after adding environment variables
+4. ❌ Demo account not created in production Firebase
+
+**Helpful commands:**
+```bash
+# Validate Firebase configuration locally
+npm run check-config
+
+# Create demo account
+npm run setup-demo
+```
+
+The app includes a **visual Config Checker** that appears in production when configuration issues are detected. Look for the yellow "Config Check" button in the bottom-right corner!
 
 ### Deploy to Vercel
 
