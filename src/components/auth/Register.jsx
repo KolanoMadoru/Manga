@@ -86,7 +86,7 @@ const Register = () => {
                 to="/login"
                 className="font-semibold underline hover:text-purple-700 dark:hover:text-purple-300"
               >
-                Use Demo Account
+                Use Quick Login (Rahman/Rivai)
               </Link>
             </div>
           </div>
